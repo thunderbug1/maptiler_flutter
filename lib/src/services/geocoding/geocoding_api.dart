@@ -11,7 +11,7 @@ class GeocodingAPI {
   /// [query] Place name to search. You can also use bare POI category or mix it with a name to search for POIs of desired category, unless poi index is excluded.
   Future<SearchResults> searchByName(String query,
       {List<double>? bbox,
-      String? proximity,
+      Proximity? proximity, // Use ProximityLoc here
       List<String>? language,
       List<String>? country,
       int? limit,
@@ -21,7 +21,7 @@ class GeocodingAPI {
       bool? autocomplete}) async {
     var queryParams = {
       'bbox': bbox?.join(','),
-      'proximity': proximity,
+      'proximity': proximity?.toString(), // Updated to use ProximityLoc
       'language': language?.join(','),
       'country': country?.join(','),
       'limit': limit?.toString(),

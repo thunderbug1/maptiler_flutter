@@ -104,6 +104,152 @@ class FeatureProperties {
       );
 }
 
+class Point {
+  final String type;
+  final Coordinates coordinates;
+
+  Point({required this.type, required this.coordinates});
+
+  factory Point.fromJson(Map<String, dynamic> json) {
+    return Point(
+      type: json['type'],
+      coordinates: Coordinates.fromJson(json['coordinates']),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'coordinates': coordinates.toJson(),
+      };
+}
+
+class LineString {
+  final String type;
+  final List<Coordinates> coordinates;
+
+  LineString({required this.type, required this.coordinates});
+
+  factory LineString.fromJson(Map<String, dynamic> json) {
+    return LineString(
+      type: json['type'],
+      coordinates: List<Coordinates>.from(
+          json['coordinates'].map((x) => Coordinates.fromJson(x))),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'coordinates': coordinates.map((x) => x.toJson()).toList(),
+      };
+}
+
+class Polygon {
+  final String type;
+  final List<List<Coordinates>> coordinates;
+
+  Polygon({required this.type, required this.coordinates});
+
+  factory Polygon.fromJson(Map<String, dynamic> json) {
+    return Polygon(
+      type: json['type'],
+      coordinates: List<List<Coordinates>>.from(json['coordinates'].map((x) =>
+          List<Coordinates>.from(x.map((y) => Coordinates.fromJson(y))))),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'coordinates':
+            coordinates.map((x) => x.map((y) => y.toJson()).toList()).toList(),
+      };
+}
+
+class MultiPoint {
+  final String type;
+  final List<Coordinates> coordinates;
+
+  MultiPoint({required this.type, required this.coordinates});
+
+  factory MultiPoint.fromJson(Map<String, dynamic> json) {
+    return MultiPoint(
+      type: json['type'],
+      coordinates: List<Coordinates>.from(
+          json['coordinates'].map((x) => Coordinates.fromJson(x))),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'coordinates': coordinates.map((x) => x.toJson()).toList(),
+      };
+}
+
+class MultiLineString {
+  final String type;
+  final List<List<Coordinates>> coordinates;
+
+  MultiLineString({required this.type, required this.coordinates});
+
+  factory MultiLineString.fromJson(Map<String, dynamic> json) {
+    return MultiLineString(
+      type: json['type'],
+      coordinates: List<List<Coordinates>>.from(json['coordinates'].map((x) =>
+          List<Coordinates>.from(x.map((y) => Coordinates.fromJson(y))))),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'coordinates':
+            coordinates.map((x) => x.map((y) => y.toJson()).toList()).toList(),
+      };
+}
+
+class MultiPolygon {
+  final String type;
+  final List<List<List<Coordinates>>> coordinates;
+
+  MultiPolygon({required this.type, required this.coordinates});
+
+  factory MultiPolygon.fromJson(Map<String, dynamic> json) {
+    return MultiPolygon(
+      type: json['type'],
+      coordinates: List<List<List<Coordinates>>>.from(json['coordinates'].map(
+          (x) => List<List<Coordinates>>.from(x.map((y) =>
+              List<Coordinates>.from(y.map((z) => Coordinates.fromJson(z))))))),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'coordinates': coordinates
+            .map(
+                (x) => x.map((y) => y.map((z) => z.toJson()).toList()).toList())
+            .toList(),
+      };
+}
+
+class GeometryCollection {
+  final String type;
+  final List<dynamic> geometries; // This could include any of the above types.
+
+  GeometryCollection({required this.type, required this.geometries});
+
+  factory GeometryCollection.fromJson(Map<String, dynamic> json) {
+    // You need to implement the logic to parse different geometry types
+    return GeometryCollection(
+      type: json['type'],
+      geometries: json['geometries'],
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'type': type,
+        'geometries':
+            geometries, // Implement serialization for different geometries
+      };
+}
+
 class BoundingBox {
   final double west;
   final double south;
@@ -191,6 +337,17 @@ class OSMTagsObject {
       );
 }
 
-
 // Define other geometrical types like PointObject, LineStringObject, etc.
 
+// custom Helper class not defined in the API itself
+class Proximity {
+  final double latitude;
+  final double longitude;
+
+  Proximity({required this.latitude, required this.longitude});
+
+  @override
+  String toString() {
+    return '$latitude,$longitude';
+  }
+}
