@@ -1,7 +1,8 @@
+/// https://docs.maptiler.com/cloud/api/geocoding/#SearchResults
 class SearchResults {
   final String type;
   final List<Feature> features;
-  final List<String> query;
+  final List<double> query;
   final String attribution;
 
   SearchResults(
@@ -14,7 +15,7 @@ class SearchResults {
         type: json['type'],
         features: List<Feature>.from(
             json['features'].map((x) => Feature.fromJson(x))),
-        query: List<String>.from(json['query'].map((x) => x as String)),
+        query: List<double>.from(json['query'].map((x) => x as double)),
         attribution: json['attribution'],
       );
 }
@@ -348,6 +349,6 @@ class Proximity {
 
   @override
   String toString() {
-    return '$latitude,$longitude';
+    return '$longitude,$latitude';
   }
 }
