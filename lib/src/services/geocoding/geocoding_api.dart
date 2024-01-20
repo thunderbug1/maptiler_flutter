@@ -38,7 +38,8 @@ class GeocodingAPI {
     if (response.statusCode == 200) {
       return SearchResults.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load search results');
+      throw Exception(
+          'Failed to load search results. response.statusCode:${response.statusCode}');
     }
   }
 
@@ -61,7 +62,8 @@ class GeocodingAPI {
     if (response.statusCode == 200) {
       return SearchResults.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load search results');
+      throw Exception(
+          'Failed to load search results. response.statusCode:${response.statusCode}');
     }
   }
 
@@ -78,7 +80,8 @@ class GeocodingAPI {
     if (response.statusCode == 200) {
       return SearchResults.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load search results');
+      throw Exception(
+          'Failed to load search results. response.statusCode:${response.statusCode}');
     }
   }
 
@@ -112,7 +115,8 @@ class GeocodingAPI {
       var data = json.decode(response.body) as List;
       return data.map((item) => SearchResults.fromJson(item)).toList();
     } else {
-      throw Exception('Failed to load batch search results');
+      throw Exception(
+          'Failed to load batch search results. response.statusCode:${response.statusCode}');
     }
   }
 }

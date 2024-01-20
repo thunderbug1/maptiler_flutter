@@ -22,7 +22,8 @@ class CoordinatesAPI {
     if (response.statusCode == 200) {
       return SearchResult.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load search results');
+      throw Exception(
+          'Failed to load search results. response.statusCode:${response.statusCode}');
     }
   }
 
@@ -34,7 +35,8 @@ class CoordinatesAPI {
     if (response.statusCode == 200) {
       return TransformResult.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to transform coordinates');
+      throw Exception(
+          'Failed to transform coordinates. response.statusCode:${response.statusCode}');
     }
   }
 }
