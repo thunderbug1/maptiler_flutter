@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-# Flutter MapTiler API Wrapper
+# MapTiler Flutter
 
 This Flutter package provides a convenient Dart wrapper around the MapTiler Cloud API, allowing easy access to various MapTiler services like Geocoding, Coordinates, and Geolocation.
 
@@ -36,12 +36,12 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_maptiler_api_wrapper: ^1.0.0
+  maptiler_flutter: ^0.0.2
 ```
 
 ### Import the Package
 ```
-import 'package:flutter_maptiler_api_wrapper/flutter_maptiler_api_wrapper.dart';
+import 'package:maptiler_flutter/maptiler.dart';
 ```
 
 ### Usage
