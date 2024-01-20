@@ -1,0 +1,52 @@
+{
+    "name": "flutter_docker",
+    "context": "..",
+    "dockerFile": "Dockerfile",
+    "remoteUser": "developer",
+    "containerEnv": {
+        "IS_LOCAL_ENV": "True", // used to detect dev environment for backend
+        "GOOGLE_APPLICATION_CREDENTIALS": "/home/developer/workspace/backend/activilitng-firebase-adminsdk-kdo0k-d5e8edd2f0.json"
+    },
+    "customizations": {
+        "settings": {
+            "terminal.integrated.shell.linux": null
+        },
+        "vscode": {
+            "extensions": [
+				"Dart-Code.flutter",
+				"Dart-Code.dart-code",
+				"ms-azuretools.vscode-docker",
+				"ms-python.python",
+				"ms-pyright.pyright",
+				"toba.vsfire"
+			]
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+        // "ghcr.io/devcontainers/features/node:1": {},
+        // "ghcr.io/devcontainers-contrib/features/firebase-cli:2": {},
+        // "ghcr.io/akhildevelops/devcontainer-features/android-cli:0": {},
+        // "ghcr.io/jarrodcolburn/features/flutter-sdk:0": {}
+        
+    },
+    "mounts": [
+        "source=/dev/bus/usb,target=/dev/bus/usb,type=bind"
+    ],
+    "runArgs": [
+        "--privileged",
+        "--network=host",
+        "--device",
+        "/dev/kvm",
+        "--device",
+        "/dev/dri:/dev/dri",
+        "-v",
+        "/tmp/.X11-unix:/tmp/.X11-unix",
+        "-e",
+        "DISPLAY=${localEnv:DISPLAY}",
+        "-v",
+        "/home/${localEnv:USER}/.Xauthority:/root/.Xauthority:rw"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/developer/workspace,type=bind,consistency=delegated",
+    "workspaceFolder": "/home/developer/workspace"
+}
