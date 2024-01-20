@@ -43,8 +43,10 @@ class GeocodingAPI {
     }
   }
 
-  Future<SearchResults> searchByCoordinates(double longitude, double latitude,
-      {List<String>? language,
+  Future<SearchResults> searchByCoordinates(
+      {required double longitude,
+      required double latitude,
+      List<String>? language,
       int? limit,
       List<String>? types,
       bool? excludeTypes}) async {
