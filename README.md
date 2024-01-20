@@ -36,7 +36,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  maptiler_flutter: ^0.0.2
+  maptiler_flutter: ^0.0.3
 ```
 
 ### Import the Package
@@ -58,22 +58,22 @@ void main() {
 ### API Usage
 ```
 // Forward Geocoding
-GeocodingService.searchByName("Zurich").then((result) {
+MapTiler.geocodingAPI.searchByName("Zurich").then((result) {
   print(result.features);
 });
 
 // Reverse Geocoding
-GeocodingService.searchByCoordinates(8.55, 47.36667).then((result) {
+MapTiler.geocodingAPI.searchByCoordinates(8.55, 47.36667).then((result) {
   print(result.features);
 });
 
 // Search Coordinates
-CoordinatesAPI.searchCoordinates("query").then((result) {
+MapTiler.coordinatesAPI.searchCoordinates("query").then((result) {
   print(result.results);
 });
 
 // IP Geolocation
-GeolocationService.getIPGeolocation().then((result) {
+MapTiler.geolocationAPI.getIPGeolocation().then((result) {
   print(result.city);
 });
 ```
