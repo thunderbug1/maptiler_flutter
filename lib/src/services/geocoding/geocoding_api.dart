@@ -19,6 +19,9 @@ class GeocodingAPI {
       bool? excludeTypes,
       bool? fuzzyMatch,
       bool? autocomplete}) async {
+    if (query.isEmpty) {
+      throw Exception('searchByName query is empty!');
+    }
     var queryParams = {
       'bbox': bbox?.join(','),
       'proximity': proximity?.toString(), // Updated to use ProximityLoc
@@ -97,6 +100,10 @@ class GeocodingAPI {
       bool? excludeTypes,
       bool? fuzzyMatch,
       bool? autocomplete}) async {
+    queries = queries..removeWhere((value) => value == "");
+    if (queries.isEmpty) {
+      throw Exception('batchGeocoding queries were empty.');
+    }
     var queryParams = {
       'bbox': bbox?.join(','),
       'proximity': proximity,
