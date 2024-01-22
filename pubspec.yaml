@@ -1,6 +1,6 @@
 name: maptiler_flutter
 description: A flutter wrapper for the mapTiler Api.
-version: 0.0.3
+version: 0.1.0
 repository: https://github.com/thunderbug1/maptiler_flutter
 
 environment:

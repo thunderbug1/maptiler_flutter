@@ -15,6 +15,11 @@ and the Flutter guide for
 
 This Flutter package provides a convenient Dart wrapper around the MapTiler Cloud API, allowing easy access to various MapTiler services like Geocoding, Coordinates, and Geolocation.
 
+# Motivation
+
+I started this package since I wanted to build a location selector with autocomplete functionality for [Activilit](https://activilit.com). 
+I didn't want to use the google maps API since it is quite expensive and so I researched for alternatives and found MapTiler.
+
 ## Features
 
 - Geocoding API: Forward and reverse geocoding, including batch geocoding.
@@ -36,7 +41,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  maptiler_flutter: ^0.0.3
+  maptiler_flutter: ^0.1.0
 ```
 
 ### Import the Package
