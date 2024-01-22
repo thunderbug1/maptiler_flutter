@@ -2,7 +2,7 @@
 class SearchResults {
   final String type;
   final List<Feature> features;
-  final List<double> query;
+  final dynamic query;
   final String attribution;
 
   SearchResults(
@@ -15,7 +15,9 @@ class SearchResults {
         type: json['type'],
         features: List<Feature>.from(
             json['features'].map((x) => Feature.fromJson(x))),
-        query: List<double>.from(json['query'].map((x) => x as double)),
+        query: json[
+            'query'], // according to documentation it is a list of two doubles but api often returns a string
+        // query: List<double>.from(json['query'].map((x) => x as double)),
         attribution: json['attribution'],
       );
 }
